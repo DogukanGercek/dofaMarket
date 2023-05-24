@@ -12,7 +12,7 @@ namespace dofaMarketForm
     {
         public SqlConnection GetCon() { 
             SqlConnection baglanti = new SqlConnection();
-            baglanti.ConnectionString = @"Data Source=DESKTOP-29SJKEI\SQLEXPRESS;Initial Catalog=C:\USERS\NDOGU\DOCUMENTS\DOFAMARKETDB.MDF;Integrated Security=True";
+            baglanti.ConnectionString = @"Data Source=DESKTOP-H7PS03D\SQLEXPRESS;Initial Catalog=C:\USERS\NDOGU\DOCUMENTS\DOFAMARKETDB.MDF;Integrated Security=True";
             return baglanti;
 
         }
