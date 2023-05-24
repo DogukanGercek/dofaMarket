@@ -1,6 +1,6 @@
 ﻿namespace dofaMarketForm
 {
-    partial class Form1
+    partial class Giris
     {
         /// <summary>
         ///  Required designer variable.
