@@ -64,6 +64,7 @@
             button1.TabIndex = 2;
             button1.Text = "Giriş";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // textBox1
             // 
@@ -79,7 +80,7 @@
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 4;
             // 
-            // Form1
+            // Giris
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -89,7 +90,7 @@
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "Giris";
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
