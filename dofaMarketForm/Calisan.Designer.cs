@@ -47,6 +47,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(171, 23);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -66,6 +67,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(394, 54);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // textBox2
             // 

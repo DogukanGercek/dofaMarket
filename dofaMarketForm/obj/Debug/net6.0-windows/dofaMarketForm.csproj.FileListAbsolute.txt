@@ -41,3 +41,4 @@ C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMa
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\ref\dofaMarketForm.dll
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.Calisan.resources
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.Giris.resources
+C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.AdminForm.resources
