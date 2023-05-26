@@ -1,5 +1,4 @@
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.csproj.AssemblyReference.cache
-C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.Form1.resources
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.csproj.GenerateResource.cache
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.AssemblyInfoInputs.cache
@@ -40,3 +39,5 @@ C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\refint
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.pdb
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.genruntimeconfig.cache
 C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\ref\dofaMarketForm.dll
+C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.Calisan.resources
+C:\Users\ndogu\Desktop\dofaMarket\dofaMarketForm\obj\Debug\net6.0-windows\dofaMarketForm.Giris.resources
