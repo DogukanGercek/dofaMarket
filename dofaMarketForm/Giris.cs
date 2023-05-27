@@ -11,7 +11,7 @@ namespace dofaMarketForm
         {
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-29SJKEI\SQLEXPRESS;Initial Catalog=C:\USERS\NDOGU\DOCUMENTS\DOFAMARKETDB.MDF;Integrated Security=True;TrustServerCertificate=true");
+        SqlConnection baglanti = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
         private void Form1_Load(object sender, EventArgs e)
         {
