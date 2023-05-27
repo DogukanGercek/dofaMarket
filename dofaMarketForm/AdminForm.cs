@@ -16,5 +16,19 @@ namespace dofaMarketForm
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            adminCalisan adminCalisan = new adminCalisan();
+            adminCalisan.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            adminUrun adminUrun = new adminUrun();
+            adminUrun.Show();
+
+        }
+
     }
 }
