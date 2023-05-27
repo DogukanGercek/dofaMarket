@@ -37,5 +37,10 @@ namespace dofaMarketForm
         {
 
         }
+
+        private void Calisan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

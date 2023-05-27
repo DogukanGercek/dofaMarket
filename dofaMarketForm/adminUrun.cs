@@ -16,5 +16,10 @@ namespace dofaMarketForm
         {
             InitializeComponent();
         }
+
+        private void Urun_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

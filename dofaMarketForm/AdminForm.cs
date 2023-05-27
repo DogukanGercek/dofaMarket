@@ -30,5 +30,9 @@ namespace dofaMarketForm
 
         }
 
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -61,6 +61,7 @@
             Controls.Add(button2);
             Name = "AdminForm";
             Text = "admin";
+            Load += AdminForm_Load;
             ResumeLayout(false);
         }
 
