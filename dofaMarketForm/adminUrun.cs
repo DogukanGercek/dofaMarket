@@ -21,5 +21,10 @@ namespace dofaMarketForm
         {
 
         }
+
+        private void adminUrun_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
