@@ -31,8 +31,8 @@
             label1 = new Label();
             label2 = new Label();
             button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txt_username = new TextBox();
+            txt_pass = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -66,27 +66,29 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox1
+            // txt_username
             // 
-            textBox1.Location = new Point(230, 115);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 3;
+            txt_username.Location = new Point(230, 115);
+            txt_username.Name = "txt_username";
+            txt_username.Size = new Size(100, 23);
+            txt_username.TabIndex = 3;
+            txt_username.TextChanged += textBox1_TextChanged;
             // 
-            // textBox2
+            // txt_pass
             // 
-            textBox2.Location = new Point(230, 170);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 4;
+            txt_pass.Location = new Point(230, 170);
+            txt_pass.Name = "txt_pass";
+            txt_pass.Size = new Size(100, 23);
+            txt_pass.TabIndex = 4;
+            txt_pass.TextChanged += textBox2_TextChanged;
             // 
             // Giris
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txt_pass);
+            Controls.Add(txt_username);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -102,7 +104,7 @@
         private Label label1;
         private Label label2;
         private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txt_username;
+        private TextBox txt_pass;
     }
 }
