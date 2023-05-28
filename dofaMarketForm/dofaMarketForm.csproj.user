@@ -7,13 +7,13 @@
     <Compile Update="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="adminUrun.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Calisan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Giris.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="adminUrun.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

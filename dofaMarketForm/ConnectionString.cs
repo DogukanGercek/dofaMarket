@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 //using Microsoft.Data.SqlClient;
 
 
@@ -13,7 +15,7 @@ namespace dofaMarketForm
     {
         public SqlConnection GetCon() { 
             SqlConnection baglanti = new SqlConnection();
-            baglanti.ConnectionString = @"Data Source=DESKTOP-H7PS03D\SQLEXPRESS;Initial Catalog=C:\USERS\NDOGU\DOCUMENTS\DOFAMARKETDB.MDF;Integrated Security=True";
+            baglanti.ConnectionString = @"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`";
             return baglanti;
             
 
