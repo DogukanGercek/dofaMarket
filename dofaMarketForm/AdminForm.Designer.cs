@@ -28,12 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "admin";
+            button2 = new Button();
+            button3 = new Button();
+            SuspendLayout();
+            // 
+            // button2
+            // 
+            button2.Location = new Point(110, 107);
+            button2.Name = "button2";
+            button2.Size = new Size(159, 61);
+            button2.TabIndex = 1;
+            button2.Text = "Çalışan Bilgileri";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(329, 107);
+            button3.Name = "button3";
+            button3.Size = new Size(159, 61);
+            button3.TabIndex = 2;
+            button3.Text = "Ürün Bilgileri";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // AdminForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(602, 314);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Name = "AdminForm";
+            Text = "admin";
+            Load += AdminForm_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button2;
+        private Button button3;
     }
 }

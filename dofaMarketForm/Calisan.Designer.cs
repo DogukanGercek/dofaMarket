@@ -149,6 +149,7 @@
             Controls.Add(textBox1);
             Name = "Calisan";
             Text = "Calisan";
+            Load += Calisan_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
