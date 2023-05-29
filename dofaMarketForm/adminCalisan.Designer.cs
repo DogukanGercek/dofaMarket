@@ -44,8 +44,9 @@
             button2.Name = "button2";
             button2.Size = new Size(113, 23);
             button2.TabIndex = 11;
-            button2.Text = "Fiyat Güncelle";
+            button2.Text = "ÇALIŞANI SİL";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -53,7 +54,7 @@
             button1.Name = "button1";
             button1.Size = new Size(113, 23);
             button1.TabIndex = 10;
-            button1.Text = "Stok Güncelle";
+            button1.Text = "MAAŞ DEĞİŞTİR";
             button1.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -68,11 +69,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(165, 44);
+            label1.Location = new Point(154, 44);
             label1.Name = "label1";
-            label1.Size = new Size(58, 15);
+            label1.Size = new Size(76, 15);
             label1.TabIndex = 8;
-            label1.Text = "ÜRÜNLER";
+            label1.Text = "ÇALIŞANLAR";
+            label1.Click += label1_Click;
             // 
             // dataGridView2
             // 
