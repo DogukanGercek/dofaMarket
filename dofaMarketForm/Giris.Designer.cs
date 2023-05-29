@@ -33,6 +33,7 @@
             button1 = new Button();
             txt_username = new TextBox();
             txt_pass = new TextBox();
+            entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             SuspendLayout();
             // 
             // label1
@@ -82,6 +83,14 @@
             txt_pass.TabIndex = 4;
             txt_pass.TextChanged += textBox2_TextChanged;
             // 
+            // entityCommand1
+            // 
+            entityCommand1.CommandTimeout = 0;
+            entityCommand1.CommandTree = null;
+            entityCommand1.Connection = null;
+            entityCommand1.EnablePlanCaching = true;
+            entityCommand1.Transaction = null;
+            // 
             // Giris
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -106,5 +115,6 @@
         private Button button1;
         private TextBox txt_username;
         private TextBox txt_pass;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
     }
 }

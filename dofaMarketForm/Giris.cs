@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 
 namespace dofaMarketForm
@@ -24,7 +23,7 @@ namespace dofaMarketForm
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {       
+        {
             try
             {
                 string query = "SELECT * FROM auth WHERE username = @username AND password = @password"; // girilen parola ve kullanıcı adının kontrolü
@@ -37,7 +36,7 @@ namespace dofaMarketForm
                 if (dbtable.Rows.Count > 0) // row kontrolü
                 {
                     string userType = dbtable.Rows[0]["userType"].ToString(); // usertype cashier mi admin mi ona göre ekran değişicek
-                    
+
                     if (userType == "admin")
                     {
                         // Admin sayfasına yönlendirme
@@ -50,20 +49,21 @@ namespace dofaMarketForm
                         // Kullanıcı sayfasına yönlendirme
                         Calisan form2 = new Calisan();
                         form2.Show();
-                    }          
-                    
+                    }
+
                     this.Hide();
 
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Invalid login details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // olası bir hata durumunda yapılacak bilgilendirilme
                     txt_username.Clear();
                     txt_pass.Clear();
 
                     txt_username.Focus();
-                      }
+                }
 
-                
+
 
             }
             catch (Exception)
