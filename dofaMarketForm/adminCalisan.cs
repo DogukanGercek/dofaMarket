@@ -119,7 +119,7 @@ namespace dofaMarketForm
             sqlCon.Open();
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Employees where EmployeeID='"+textBox1.Text+"' ";
+            cmd.CommandText = "delete from Employees where EmployeeID='" + textBox1.Text + "' ";
 
             cmd.ExecuteNonQuery();
             sqlCon.Close();
@@ -134,8 +134,8 @@ namespace dofaMarketForm
             sqlCon.Open();
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Update Employees set FirstName = '" + textBox6.Text + "', LastName = '" + textBox5.Text + "' , Title = '" + textBox4.Text + "' , BirthDate = '" + textBox3.Text + "' , HireDate = '" + textBox2.Text + "' ,  Salary = '" + textBox7.Text + "', Tel = '" + textBox8.Text + "' , EmployeeID ='"+textBox1.Text+"' ";
-            
+            cmd.CommandText = "Update Employees set FirstName = '" + textBox6.Text + "', LastName = '" + textBox5.Text + "' , Title = '" + textBox4.Text + "' , BirthDate = '" + textBox3.Text + "' , HireDate = '" + textBox2.Text + "' ,  Salary = '" + textBox7.Text + "', Tel = '" + textBox8.Text + "' , EmployeeID ='" + textBox1.Text + "' ";
+
             cmd.ExecuteNonQuery();
             sqlCon.Close();
             filldgv2();
@@ -146,6 +146,16 @@ namespace dofaMarketForm
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            string query = "select * from Employees where FirstName like @FirstName + '%'";
+            SqlDataAdapter sda = new SqlDataAdapter(query,sqlCon);
+            sda.SelectCommand.Parameters.AddWithValue("@FirstName", textBox9.Text.Trim()) ;
+            DataTable data = new DataTable();
+            sda.Fill(data);
+            dataGridView2.DataSource = data;
         }
     }
 }

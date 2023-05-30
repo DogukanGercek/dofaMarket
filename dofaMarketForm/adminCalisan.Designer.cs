@@ -61,6 +61,8 @@
             button2 = new Button();
             button5 = new Button();
             label2 = new Label();
+            label11 = new Label();
+            textBox9 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             SuspendLayout();
@@ -157,12 +159,13 @@
             // 
             // button3
             // 
-            button3.Location = new Point(632, 152);
+            button3.Location = new Point(727, 12);
             button3.Name = "button3";
-            button3.Size = new Size(113, 23);
+            button3.Size = new Size(50, 23);
             button3.TabIndex = 43;
             button3.Text = "Ara";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
             // 
             // textBox8
             // 
@@ -322,11 +325,29 @@
             label2.TabIndex = 24;
             label2.Text = "BİLGİLER";
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(554, 16);
+            label11.Name = "label11";
+            label11.Size = new Size(42, 15);
+            label11.TabIndex = 45;
+            label11.Text = "Arama";
+            // 
+            // textBox9
+            // 
+            textBox9.Location = new Point(602, 12);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(119, 23);
+            textBox9.TabIndex = 46;
+            // 
             // adminCalisan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox9);
+            Controls.Add(label11);
             Controls.Add(button1);
             Controls.Add(button3);
             Controls.Add(textBox8);
@@ -393,5 +414,7 @@
         private DataGridViewTextBoxColumn Salary;
         private DataGridViewTextBoxColumn HireDate;
         private DataGridViewTextBoxColumn Tel;
+        private Label label11;
+        private TextBox textBox9;
     }
 }
