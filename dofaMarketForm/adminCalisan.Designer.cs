@@ -340,6 +340,7 @@
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(119, 23);
             textBox9.TabIndex = 46;
+            textBox9.TextChanged += textBox9_TextChanged;
             // 
             // adminCalisan
             // 

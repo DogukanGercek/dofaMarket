@@ -177,6 +177,7 @@
             button3.TabIndex = 22;
             button3.Text = "Ara";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -233,6 +234,7 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(120, 23);
             textBox7.TabIndex = 27;
+            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // comboBox1
             // 

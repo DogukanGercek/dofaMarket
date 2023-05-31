@@ -19,6 +19,7 @@ namespace dofaMarketForm
     public partial class adminUrun : Form
     {
 
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
 
         MarketDatabaseContext baglantı = new MarketDatabaseContext();
         public adminUrun()
@@ -78,13 +79,15 @@ namespace dofaMarketForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
-
+            decimal fiyat = decimal.Parse(fiyatTextbox.Text);
+            short stok = short.Parse(stokTextbox.Text);
+            int id = int.Parse(idTextbox.Text);
             sqlCon.Open();
+
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            
-            cmd.CommandText = "Update Products set ProductName = '" + isimTextbox.Text + "', UnitPrice = '" + fiyatTextbox.Text + "' , UintsInStock = '" + stokTextbox.Text + "' , Supplier = '" + ureticiTextbox.Text + "' where  ProductId='" + idTextbox.Text + "' ";
+
+            cmd.CommandText = "Update Products set ProductName = '" + isimTextbox.Text + "', UnitPrice = '" + fiyat + "' , UintsInStock = '" + stok + "' , Supplier = '" + ureticiTextbox.Text + "' where  ProductId='" + id + "' ";
             cmd.ExecuteNonQuery();
             sqlCon.Close();
             fill();
@@ -93,9 +96,9 @@ namespace dofaMarketForm
 
         }
 
-            
-           
-        
+
+
+
 
         private void urunlerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -104,21 +107,73 @@ namespace dofaMarketForm
 
         private void fill()
         {
-            var products = baglantı.Products.ToList();
-            urunlerGrid.DataSource = products;
 
+            sqlCon.Open();
+            SqlCommand cmd = sqlCon.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from Products";
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter sqlDa = new SqlDataAdapter(cmd);
+            DataTable dtb1 = new DataTable();
+            sqlDa.Fill(dtb1);
+            urunlerGrid.DataSource = dtb1;
             urunlerGrid.Columns[0].Visible = false;
             urunlerGrid.Columns[2].Visible = false;
             urunlerGrid.Columns[4].Visible = false;
             urunlerGrid.Columns[5].Visible = false;
-            urunlerGrid.Columns[6].Visible = false;
+            originalDataTable = (DataTable)urunlerGrid.DataSource;
+            sqlCon.Close();
+
+
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string secilenBirim = comboBox1.SelectedItem.ToString();
+            string aramaMetni = textBox7.Text.Trim();
 
+            FiltreleDataGridView(secilenBirim, aramaMetni);
         }
+        private DataTable originalDataTable;
+
+
+        private void FiltreleDataGridView(string secilenBirim, string aramaMetni)
+        {
+            Dictionary<string, int> kategoriIDMapping = new Dictionary<string, int>()
+    {
+        { "Food&Bev", 1 },
+        { "Electronics", 2 },
+        { "Outfit", 3 },
+        { "Tüm Kategoriler", 0 }
+    };
+
+            int secilenKategoriID = kategoriIDMapping[secilenBirim];
+
+            DataView dv = new DataView(originalDataTable);
+
+            if (secilenKategoriID == 0)
+            {
+                dv.RowFilter = string.Empty;
+            }
+            else
+            {
+                dv.RowFilter = "CategoryID = " + secilenKategoriID;
+            }
+            if (!string.IsNullOrWhiteSpace(aramaMetni))
+            {
+                string filterExpression = $"ProductName LIKE '%{aramaMetni}%'";
+                dv.RowFilter += (string.IsNullOrEmpty(dv.RowFilter) ? "" : " AND ") + filterExpression;
+            }
+
+            DataTable filteredTable = dv.ToTable();
+
+            urunlerGrid.DataSource = filteredTable;
+        }
+
+
+
+
         private void FillComboBox()
         {
             var kategoriler = baglantı.Categories.ToList();
@@ -136,6 +191,7 @@ namespace dofaMarketForm
         {
             if (e.RowIndex >= 0)
             {
+
                 DataGridViewRow row = urunlerGrid.Rows[e.RowIndex];
                 // Örneğin, DataGridView'de seçilen satırın ProductId'sini alalım
                 int selectedProductId = (int)urunlerGrid.SelectedRows[0].Cells["ProductId"].Value;
@@ -192,6 +248,18 @@ namespace dofaMarketForm
             fiyatTextbox.Clear();
             ureticiTextbox.Clear();
             stokTextbox.Clear();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string aramaMetni = textBox7.Text.Trim();
+
+            FiltreleDataGridView(comboBox1.SelectedItem.ToString(), aramaMetni);
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

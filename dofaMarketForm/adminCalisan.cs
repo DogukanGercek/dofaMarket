@@ -37,6 +37,7 @@ namespace dofaMarketForm
         {
 
         }
+        
 
         private void filldgv2()
         {
@@ -52,6 +53,7 @@ namespace dofaMarketForm
             sqlDa.Fill(dtb1);
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = dtb1;
+            
             sqlCon.Close();
 
 
@@ -147,15 +149,39 @@ namespace dofaMarketForm
         {
 
         }
-
+        private DataView dv;
         private void button3_Click_1(object sender, EventArgs e)
         {
-            string query = "select * from Employees where FirstName like @FirstName + '%'";
-            SqlDataAdapter sda = new SqlDataAdapter(query,sqlCon);
-            sda.SelectCommand.Parameters.AddWithValue("@FirstName", textBox9.Text.Trim()) ;
-            DataTable data = new DataTable();
-            sda.Fill(data);
-            dataGridView2.DataSource = data;
+            string aramaMetni = textBox9.Text.Trim();
+
+            FiltreleDataGridView(aramaMetni);
+        }
+
+
+        private void FiltreleDataGridView(string aramaMetni)
+        {
+            if (dv == null)
+            {
+                DataTable dataTable = (DataTable)dataGridView2.DataSource;
+                dv = new DataView(dataTable);
+            }
+
+            // Önceki filtreleri temizle
+            dv.RowFilter = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(aramaMetni))
+            {
+                string filterExpression = $"FirstName LIKE '%{aramaMetni}%'";
+                dv.RowFilter = filterExpression;
+            }
+
+            DataTable filteredTable = dv.ToTable();
+
+            dataGridView2.DataSource = filteredTable;
+        }
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
