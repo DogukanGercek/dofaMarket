@@ -37,7 +37,7 @@ namespace dofaMarketForm
         {
 
         }
-        
+
 
         private void filldgv2()
         {
@@ -53,7 +53,7 @@ namespace dofaMarketForm
             sqlDa.Fill(dtb1);
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = dtb1;
-            
+
             sqlCon.Close();
 
 
@@ -181,6 +181,20 @@ namespace dofaMarketForm
         }
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+            textBox7.Clear();
+            textBox8.Clear();
+            
 
         }
     }

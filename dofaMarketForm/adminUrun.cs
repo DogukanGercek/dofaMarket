@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
+using System.Data.Entity.SqlServer;
+
+
 
 namespace dofaMarketForm
 {
@@ -22,10 +25,12 @@ namespace dofaMarketForm
         SqlConnection sqlCon = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
 
         MarketDatabaseContext baglantı = new MarketDatabaseContext();
+
         public adminUrun()
         {
             InitializeComponent();
         }
+
 
         private void Urun_Load(object sender, EventArgs e)
         {
@@ -96,14 +101,6 @@ namespace dofaMarketForm
 
         }
 
-
-
-
-
-        private void urunlerGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void fill()
         {
@@ -193,19 +190,26 @@ namespace dofaMarketForm
             {
 
                 DataGridViewRow row = urunlerGrid.Rows[e.RowIndex];
-                // Örneğin, DataGridView'de seçilen satırın ProductId'sini alalım
-                int selectedProductId = (int)urunlerGrid.SelectedRows[0].Cells["ProductId"].Value;
 
-                // Seçilen ürünün Category verisine erişmek için LINQ sorgusu kullanalım
-                var product = baglantı.Products.FirstOrDefault(p => p.ProductId == selectedProductId);
-
-                if (product != null)
+                string id = row.Cells[2].Value.ToString();
+                int id2 = int.Parse(id);
+                if (id2 ==1)
                 {
-                    kategoriTextbox.Text = product.Category?.CategoryName;
+                    kategoriTextbox.Text = "Food&Bev";
+                }
+                else if(id2==2) {
+                    kategoriTextbox.Text = "Electronics";
+                }
+                else if (id2 == 3)
+                {
+                    kategoriTextbox.Text = "Outfit";
                 }
                 idTextbox.Text = row.Cells[0].Value.ToString();
                 isimTextbox.Text = row.Cells[1].Value.ToString();
-                fiyatTextbox.Text = row.Cells[3].Value.ToString();
+                decimal fiyat = (decimal)row.Cells[3].Value;
+                int price = (int)fiyat;
+                string price2 = price.ToString();
+                fiyatTextbox.Text = price2;
                 ureticiTextbox.Text = row.Cells[5].Value.ToString();
                 stokTextbox.Text = row.Cells[4].Value.ToString();
 

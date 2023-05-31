@@ -67,7 +67,7 @@
             urunlerGrid.Size = new Size(240, 255);
             urunlerGrid.TabIndex = 0;
             urunlerGrid.CellClick += urunlerGrid_CellClick;
-            urunlerGrid.CellContentClick += urunlerGrid_CellContentClick;
+            urunlerGrid.CellContentClick += urunlerGrid_CellClick;
             // 
             // label2
             // 
@@ -251,9 +251,9 @@
             // 
             // button6
             // 
-            button6.Location = new Point(649, 270);
+            button6.Location = new Point(675, 291);
             button6.Name = "button6";
-            button6.Size = new Size(113, 23);
+            button6.Size = new Size(68, 23);
             button6.TabIndex = 29;
             button6.Text = "Temizle";
             button6.UseVisualStyleBackColor = true;
