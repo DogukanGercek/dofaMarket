@@ -18,16 +18,17 @@ public partial class MarketDatabaseContext : DbContext
 
     public virtual DbSet<Auth> Auths { get; set; }
 
-
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
+
+    public virtual DbSet<Fatura> Faturas { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=34.155.53.38;Initial Catalog=market-database;TrustServerCertificate=True;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
+        optionsBuilder.UseSqlServer("Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;TrustServerCertificate=True");
 
     }
 
@@ -78,6 +79,23 @@ public partial class MarketDatabaseContext : DbContext
             entity.Property(e => e.Salary).HasMaxLength(50);
             entity.Property(e => e.Tel).HasMaxLength(50);
             entity.Property(e => e.Title).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Fatura>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__fatura__3214EC0706D782BC");
+
+            entity.ToTable("fatura");
+
+            entity.Property(e => e.PUstu)
+                .HasColumnType("money")
+                .HasColumnName("pUstu");
+            entity.Property(e => e.Toplam)
+                .HasColumnType("money")
+                .HasColumnName("toplam");
+            entity.Property(e => e.VerilenPara)
+                .HasColumnType("money")
+                .HasColumnName("verilenPara");
         });
 
         modelBuilder.Entity<Product>(entity =>

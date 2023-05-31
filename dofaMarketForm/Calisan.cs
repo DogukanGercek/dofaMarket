@@ -15,9 +15,9 @@ namespace dofaMarketForm
 {
     public partial class Calisan : Form
     {
-        MarketDatabaseContext _context = new MarketDatabaseContext();
-        public decimal toplam = 0;
-        private List<Product> faturaUrunleri = new List<Product>();
+        MarketDatabaseContext _context = new DAL.MarketDatabaseContext(); //baglanti
+        public decimal toplam = 0; //toplam para miktari
+        private List<Product> faturaUrunleri = new List<Product>(); //faturaya eklemek için fatura listesi
 
         public Calisan()
         {
@@ -95,20 +95,23 @@ namespace dofaMarketForm
             }
         }
 
-
-        private decimal Topla(decimal price)//her çağırdğında price üstüne ekliycek
-        {
-
-            return 0;
-        }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//temizle butonu
         {
+            Fatura fatura = new Fatura() { //fatura nesnesi oluştur
+            Toplam = toplam,
+            VerilenPara = decimal.Parse(vParaTextBox.Text), //dönüşüm işlemleri
+            PUstu = decimal.Parse(pUstutextBox.Text)
+
+            };
+            _context.Faturas.Add(fatura); //veri tabanına ekle
+           _context.SaveChanges(); //kaydet
+            
+    
             toplam = 0;
             toplamtextBox.Clear();
             pUstutextBox.Clear();
