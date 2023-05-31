@@ -30,7 +30,7 @@
         {
             textBox1 = new TextBox();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            urunData = new DataGridView();
             textBox2 = new TextBox();
             label2 = new Label();
             button1 = new Button();
@@ -38,7 +38,7 @@
             textBox4 = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)urunData).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -59,15 +59,15 @@
             label1.TabIndex = 1;
             label1.Text = "Ürün barkodu okutunuz :";
             // 
-            // dataGridView1
+            // urunData
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(383, 68);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(394, 54);
-            dataGridView1.TabIndex = 2;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            urunData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            urunData.Location = new Point(383, 68);
+            urunData.Name = "urunData";
+            urunData.RowTemplate.Height = 25;
+            urunData.Size = new Size(394, 54);
+            urunData.TabIndex = 2;
+            urunData.CellContentClick += dataGridView1_CellContentClick;
             // 
             // textBox2
             // 
@@ -144,13 +144,13 @@
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(textBox2);
-            Controls.Add(dataGridView1);
+            Controls.Add(urunData);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Name = "Calisan";
             Text = "Calisan";
             Load += Calisan_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)urunData).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,7 +159,7 @@
 
         private TextBox textBox1;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView urunData;
         private TextBox textBox2;
         private Label label2;
         private Button button1;

@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using dofaMarketForm.DAL;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,13 @@ namespace dofaMarketForm
 {
     public partial class Calisan : Form
     {
+        MarketDatabaseContext _context = new MarketDatabaseContext();
+
         public Calisan()
         {
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;Connect Timeout=30;Encrypt=False;");
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -30,7 +33,7 @@ namespace dofaMarketForm
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -40,6 +43,11 @@ namespace dofaMarketForm
 
         private void Calisan_Load(object sender, EventArgs e)
         {
+            var products = _context.Products.ToList();
+            foreach (var product in products)
+            {
+                
+            }
 
         }
     }
