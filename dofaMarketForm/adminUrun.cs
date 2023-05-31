@@ -83,8 +83,8 @@ namespace dofaMarketForm
             sqlCon.Open();
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
+            
             cmd.CommandText = "Update Products set ProductName = '" + isimTextbox.Text + "', UnitPrice = '" + fiyatTextbox.Text + "' , UintsInStock = '" + stokTextbox.Text + "' , Supplier = '" + ureticiTextbox.Text + "' where  ProductId='" + idTextbox.Text + "' ";
-
             cmd.ExecuteNonQuery();
             sqlCon.Close();
             fill();

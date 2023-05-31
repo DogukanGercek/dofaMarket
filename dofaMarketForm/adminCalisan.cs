@@ -131,16 +131,16 @@ namespace dofaMarketForm
         private void button2_Click_1(object sender, EventArgs e)
         {
 
-            sqlCon.Open();
+            /*sqlCon.Open();
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Update Employees set FirstName = '" + textBox6.Text + "', LastName = '" + textBox5.Text + "' , Title = '" + textBox4.Text + "' , BirthDate = '" + textBox3.Text + "' , HireDate = '" + textBox2.Text + "' ,  Salary = '" + textBox7.Text + "', Tel = '" + textBox8.Text + "' , EmployeeID ='" + textBox1.Text + "' ";
+            cmd.CommandText = "Update Employees set FirstName = '" + textBox6.Text + "', LastName = '" + textBox5.Text + "' , Title = '" + textBox4.Text + "' , BirthDate = '" + textBox3.Text + "' , HireDate = '" + textBox2.Text + "' ,  Salary = '" + textBox7.Text + "', Tel = '" + textBox8.Text + "' where EmployeeID ='" + textBox1.Text + "' ";
 
             cmd.ExecuteNonQuery();
             sqlCon.Close();
             filldgv2();
 
-            MessageBox.Show("bilgiler güncellendi");
+            MessageBox.Show("bilgiler güncellendi");*/
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
