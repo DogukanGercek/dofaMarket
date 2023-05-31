@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace dofaMarketForm.Models
+namespace dofaMarketForm.Models;
+
+public partial class Fatura
 {
-    internal class Fatura
-    {
-    }
+    public int Id { get; set; }
+
+    public decimal? Toplam { get; set; }
+
+    public decimal? VerilenPara { get; set; }
+
+    public decimal? PUstu { get; set; }
 }

@@ -15,9 +15,9 @@ namespace dofaMarketForm
 {
     public partial class Calisan : Form
     {
-        MarketDatabaseContext _context = new MarketDatabaseContext();
-        public decimal toplam = 0;
-        private List<Product> faturaUrunleri = new List<Product>();
+        MarketDatabaseContext _context = new DAL.MarketDatabaseContext(); //baglanti
+        public decimal toplam = 0; //toplam para miktari
+        private List<Product> faturaUrunleri = new List<Product>(); //faturaya eklemek için fatura listesi
 
         public Calisan()
         {
@@ -54,7 +54,7 @@ namespace dofaMarketForm
             Console.WriteLine(ProductId);
             var product = _context.Products.FirstOrDefault(x => x.ProductId == ProductId);
 
-            if (product != null)
+            if (product != null) //boş değilse getir
             {
                 return product.UnitPrice;
             }
@@ -68,18 +68,18 @@ namespace dofaMarketForm
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //ekle button
         {
-            try
+            try //verinin var olup olmadığının kontrolü
             {   
                 urunData.DataSource = null;
                 int barcode = int.Parse(barkodTextBox.Text);
-                urunData.DataSource = _context.Products.Where(x => x.ProductId == barcode)
+                urunData.DataSource = _context.Products.Where(x => x.ProductId == barcode) //sadece name ve price tablosunu getir
                 .Select(x => new { x.ProductName, x.UnitPrice })
                 .ToList();
                 var product = _context.Products.FirstOrDefault(y => y.ProductId == barcode);
                 faturaUrunleri.Add(product);
-                faturadGV.DataSource = faturaUrunleri.Select(x => new { x.ProductName, x.UnitPrice }).ToList();
+                faturadGV.DataSource = faturaUrunleri.Select(x => new { x.ProductName, x.UnitPrice }).ToList(); //datasource dsadece veri seti alıyor o yüzden tolist yapıldı
 
 
                 decimal fiyat = GetProductPrice(barcode);
@@ -95,20 +95,22 @@ namespace dofaMarketForm
             }
         }
 
-
-        private decimal Topla(decimal price)//her çağırdğında price üstüne ekliycek
-        {
-
-            return 0;
-        }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//temizle butonu
         {
+            Fatura fatura = new Fatura() { //fatura nesnesi oluştur
+            Toplam = toplam,
+            VerilenPara = decimal.Parse(vParaTextBox.Text), //dönüşüm işlemleri
+            PUstu = decimal.Parse(pUstutextBox.Text)
+            };
+            _context.Faturas.Add(fatura); //veri tabanına ekle
+           _context.SaveChanges(); //kaydet
+            
+    
             toplam = 0;
             toplamtextBox.Clear();
             pUstutextBox.Clear();
