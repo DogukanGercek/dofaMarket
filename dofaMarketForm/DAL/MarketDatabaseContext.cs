@@ -26,6 +26,7 @@ public partial class MarketDatabaseContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+   
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("Data Source=34.155.53.38;Initial Catalog=market-database;TrustServerCertificate=True;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");

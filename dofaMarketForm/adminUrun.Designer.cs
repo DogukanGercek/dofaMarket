@@ -52,6 +52,7 @@
             textBox7 = new TextBox();
             comboBox1 = new ComboBox();
             categoryBindingSource = new BindingSource(components);
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)urunlerGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)categoryBindingSource).BeginInit();
@@ -85,6 +86,7 @@
             button1.TabIndex = 4;
             button1.Text = "Ürünü Sil";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -194,6 +196,7 @@
             button5.TabIndex = 24;
             button5.Text = "ÜRÜNLERİ GÖSTER";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // label7
             // 
@@ -244,11 +247,22 @@
             // 
             categoryBindingSource.DataSource = typeof(Models.Category);
             // 
+            // button6
+            // 
+            button6.Location = new Point(649, 270);
+            button6.Name = "button6";
+            button6.Size = new Size(113, 23);
+            button6.TabIndex = 29;
+            button6.Text = "Temizle";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // adminUrun
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button6);
             Controls.Add(comboBox1);
             Controls.Add(textBox7);
             Controls.Add(kategoriTextbox);
@@ -305,5 +319,6 @@
         private TextBox textBox7;
         private ComboBox comboBox1;
         private BindingSource categoryBindingSource;
+        private Button button6;
     }
 }
