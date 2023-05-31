@@ -18,11 +18,10 @@ public partial class MarketDatabaseContext : DbContext
 
     public virtual DbSet<Auth> Auths { get; set; }
 
+
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
-
-    public virtual DbSet<Kasa> Kasas { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
@@ -79,21 +78,6 @@ public partial class MarketDatabaseContext : DbContext
             entity.Property(e => e.Salary).HasMaxLength(50);
             entity.Property(e => e.Tel).HasMaxLength(50);
             entity.Property(e => e.Title).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<Kasa>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__kasa__3214EC0709420369");
-
-            entity.ToTable("kasa");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.BaslangicM)
-                .HasColumnType("money")
-                .HasColumnName("baslangicM");
-            entity.Property(e => e.GunsonuM)
-                .HasColumnType("money")
-                .HasColumnName("gunsonuM");
         });
 
         modelBuilder.Entity<Product>(entity =>
