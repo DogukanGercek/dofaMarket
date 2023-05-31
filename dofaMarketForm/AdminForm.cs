@@ -25,7 +25,7 @@ namespace dofaMarketForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            adminUrun adminUrun = new adminUrun();
+            adminCalisan adminUrun = new adminCalisan();
             adminUrun.Show();
 
         }

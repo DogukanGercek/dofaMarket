@@ -17,7 +17,7 @@ namespace dofaMarketForm
         {
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-H7PS03D\SQLEXPRESS;Initial Catalog=C:\USERS\NDOGU\DOCUMENTS\DOFAMARKETDB.MDF;Integrated Security=True");
+        SqlConnection baglanti = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;Connect Timeout=30;Encrypt=False;");
         private void label2_Click(object sender, EventArgs e)
         {
 
