@@ -68,6 +68,7 @@
             urunlerGrid.TabIndex = 0;
             urunlerGrid.CellClick += urunlerGrid_CellClick;
             urunlerGrid.CellContentClick += urunlerGrid_CellClick;
+            urunlerGrid.CellMouseClick += urunlerGrid_CellMouseClick;
             // 
             // label2
             // 

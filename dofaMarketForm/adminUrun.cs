@@ -193,11 +193,12 @@ namespace dofaMarketForm
 
                 string id = row.Cells[2].Value.ToString();
                 int id2 = int.Parse(id);
-                if (id2 ==1)
+                if (id2 == 1)
                 {
                     kategoriTextbox.Text = "Food&Bev";
                 }
-                else if(id2==2) {
+                else if (id2 == 2)
+                {
                     kategoriTextbox.Text = "Electronics";
                 }
                 else if (id2 == 3)
@@ -265,6 +266,39 @@ namespace dofaMarketForm
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void urunlerGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow row = urunlerGrid.Rows[e.RowIndex];
+
+                string id = row.Cells[2].Value.ToString();
+                int id2 = int.Parse(id);
+                if (id2 == 1)
+                {
+                    kategoriTextbox.Text = "Food&Bev";
+                }
+                else if (id2 == 2)
+                {
+                    kategoriTextbox.Text = "Electronics";
+                }
+                else if (id2 == 3)
+                {
+                    kategoriTextbox.Text = "Outfit";
+                }
+                idTextbox.Text = row.Cells[0].Value.ToString();
+                isimTextbox.Text = row.Cells[1].Value.ToString();
+                decimal fiyat = (decimal)row.Cells[3].Value;
+                int price = (int)fiyat;
+                string price2 = price.ToString();
+                fiyatTextbox.Text = price2;
+                ureticiTextbox.Text = row.Cells[5].Value.ToString();
+                stokTextbox.Text = row.Cells[4].Value.ToString();
+
+            }
         }
     }
 }
