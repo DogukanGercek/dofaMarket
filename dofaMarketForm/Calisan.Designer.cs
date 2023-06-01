@@ -28,59 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            barkodTextBox = new TextBox();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
-            textBox2 = new TextBox();
+            urunData = new DataGridView();
+            toplamtextBox = new TextBox();
             label2 = new Label();
             button1 = new Button();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            vParaTextBox = new TextBox();
+            pUstutextBox = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            eklebutton = new Button();
+            odeButton = new Button();
+            faturadGV = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)urunData).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)faturadGV).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // barkodTextBox
             // 
-            textBox1.Location = new Point(188, 82);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(171, 23);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            barkodTextBox.Location = new Point(182, 79);
+            barkodTextBox.Name = "barkodTextBox";
+            barkodTextBox.Size = new Size(171, 23);
+            barkodTextBox.TabIndex = 0;
+            barkodTextBox.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 82);
+            label1.Location = new Point(6, 79);
             label1.Name = "label1";
             label1.Size = new Size(170, 20);
             label1.TabIndex = 1;
             label1.Text = "Ürün barkodu okutunuz :";
             // 
-            // dataGridView1
+            // urunData
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(383, 68);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(394, 54);
-            dataGridView1.TabIndex = 2;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            urunData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            urunData.Location = new Point(383, 68);
+            urunData.Name = "urunData";
+            urunData.RowTemplate.Height = 25;
+            urunData.Size = new Size(405, 107);
+            urunData.TabIndex = 2;
+            urunData.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // textBox2
+            // toplamtextBox
             // 
-            textBox2.Location = new Point(188, 155);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(171, 23);
-            textBox2.TabIndex = 3;
+            toplamtextBox.Location = new Point(182, 152);
+            toplamtextBox.Name = "toplamtextBox";
+            toplamtextBox.Size = new Size(171, 23);
+            toplamtextBox.TabIndex = 3;
+            toplamtextBox.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(116, 155);
+            label2.Location = new Point(110, 152);
             label2.Name = "label2";
             label2.Size = new Size(66, 20);
             label2.TabIndex = 4;
@@ -96,20 +101,22 @@
             button1.TabIndex = 5;
             button1.Text = "Temizle";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // textBox3
+            // vParaTextBox
             // 
-            textBox3.Location = new Point(116, 351);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 6;
+            vParaTextBox.Location = new Point(116, 351);
+            vParaTextBox.Name = "vParaTextBox";
+            vParaTextBox.Size = new Size(100, 23);
+            vParaTextBox.TabIndex = 6;
+            vParaTextBox.TextChanged += textBox3_TextChanged;
             // 
-            // textBox4
+            // pUstutextBox
             // 
-            textBox4.Location = new Point(383, 350);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 7;
+            pUstutextBox.Location = new Point(383, 350);
+            pUstutextBox.Name = "pUstutextBox";
+            pUstutextBox.Size = new Size(100, 23);
+            pUstutextBox.TabIndex = 7;
             // 
             // label3
             // 
@@ -132,40 +139,76 @@
             label4.TabIndex = 9;
             label4.Text = "Para üstü : ";
             // 
+            // eklebutton
+            // 
+            eklebutton.Location = new Point(232, 108);
+            eklebutton.Name = "eklebutton";
+            eklebutton.Size = new Size(75, 23);
+            eklebutton.TabIndex = 10;
+            eklebutton.Text = "Ekle";
+            eklebutton.UseVisualStyleBackColor = true;
+            eklebutton.Click += button2_Click;
+            // 
+            // odeButton
+            // 
+            odeButton.Location = new Point(127, 380);
+            odeButton.Name = "odeButton";
+            odeButton.Size = new Size(75, 23);
+            odeButton.TabIndex = 11;
+            odeButton.Text = "Öde";
+            odeButton.UseVisualStyleBackColor = true;
+            odeButton.Click += button2_Click_1;
+            // 
+            // faturadGV
+            // 
+            faturadGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            faturadGV.Location = new Point(794, 21);
+            faturadGV.Name = "faturadGV";
+            faturadGV.RowTemplate.Height = 25;
+            faturadGV.Size = new Size(309, 402);
+            faturadGV.TabIndex = 12;
+            // 
             // Calisan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1115, 450);
+            Controls.Add(faturadGV);
+            Controls.Add(odeButton);
+            Controls.Add(eklebutton);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
+            Controls.Add(pUstutextBox);
+            Controls.Add(vParaTextBox);
             Controls.Add(button1);
             Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(dataGridView1);
+            Controls.Add(toplamtextBox);
+            Controls.Add(urunData);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(barkodTextBox);
             Name = "Calisan";
             Text = "Calisan";
             Load += Calisan_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)urunData).EndInit();
+            ((System.ComponentModel.ISupportInitialize)faturadGV).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox barkodTextBox;
         private Label label1;
-        private DataGridView dataGridView1;
-        private TextBox textBox2;
+        private DataGridView urunData;
+        private TextBox toplamtextBox;
         private Label label2;
         private Button button1;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox vParaTextBox;
+        private TextBox pUstutextBox;
         private Label label3;
         private Label label4;
+        private Button eklebutton;
+        private Button odeButton;
+        private DataGridView faturadGV;
     }
 }

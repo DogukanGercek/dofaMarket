@@ -31,7 +31,7 @@ public partial class MarketDatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=34.155.53.38;Initial Catalog=market-database;TrustServerCertificate=True;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
+        optionsBuilder.UseSqlServer("Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;TrustServerCertificate=True");
 
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
