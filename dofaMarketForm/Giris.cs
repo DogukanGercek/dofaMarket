@@ -10,7 +10,7 @@ namespace dofaMarketForm
         {
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;Connect Timeout=30;Encrypt=False;");
+        SqlConnection baglanti = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`;Connect Timeout=30;Encrypt=False;"); //eski usul baglanti
 
         private void Form1_Load(object sender, EventArgs e)
         {
