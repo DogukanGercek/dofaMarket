@@ -102,7 +102,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Giris";
-            Text = "Form1";
+            Text = "Giriş";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

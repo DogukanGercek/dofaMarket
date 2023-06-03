@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using dofaMarketForm.Models;
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace dofaMarketForm.DAL;
+
 
 public partial class MarketDatabaseContext : DbContext
 {

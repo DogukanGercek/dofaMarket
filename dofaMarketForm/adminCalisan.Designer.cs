@@ -63,6 +63,7 @@
             label2 = new Label();
             label11 = new Label();
             textBox9 = new TextBox();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             SuspendLayout();
@@ -340,12 +341,24 @@
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(119, 23);
             textBox9.TabIndex = 46;
+            textBox9.TextChanged += textBox9_TextChanged;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(657, 377);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 47;
+            button6.Text = "Temizle";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // adminCalisan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button6);
             Controls.Add(textBox9);
             Controls.Add(label11);
             Controls.Add(button1);
@@ -416,5 +429,6 @@
         private DataGridViewTextBoxColumn Tel;
         private Label label11;
         private TextBox textBox9;
+        private Button button6;
     }
 }

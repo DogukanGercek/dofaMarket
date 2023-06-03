@@ -16,6 +16,7 @@ namespace dofaMarketForm
     public partial class adminCalisan : Form
     {
 
+        //sql bağlama
         SqlConnection sqlCon = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
         public adminCalisan()
         {
@@ -38,6 +39,7 @@ namespace dofaMarketForm
 
         }
 
+        //sqlden gelen değerleri datagridde göstermek için fonksiyon.
         private void filldgv2()
         {
 
@@ -52,6 +54,7 @@ namespace dofaMarketForm
             sqlDa.Fill(dtb1);
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = dtb1;
+
             sqlCon.Close();
 
 
@@ -61,7 +64,7 @@ namespace dofaMarketForm
         {
 
         }
-
+        //çalışanları göster butonu: bu buton yukarıdaki datagridde sqlden gelen rowları okutmayı sağlayan fonksiyonu çalıştırır.
         private void button4_Click(object sender, EventArgs e)
         {
             filldgv2();
@@ -73,9 +76,10 @@ namespace dofaMarketForm
         }
 
         int indexRow;
+        //datagridde cell tıklaması yapıldığında geçerli row bilgilerini textboxa yazdırır.
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //rowdaki sütun bilgilerini alır
             indexRow = e.RowIndex;
             DataGridViewRow row = dataGridView2.Rows[indexRow];
             textBox1.Text = row.Cells[2].Value.ToString();
@@ -93,69 +97,112 @@ namespace dofaMarketForm
         {
 
         }
-
+        //bu buton çalışan eklemesi yapar.
         private void button1_Click_1(object sender, EventArgs e)
         {
             sqlCon.Open();
-
+            //sql bağlantısı
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
+            //burada Employees tableına textboxtan alınan değerler alınıp rowa kaydedilir.
             cmd.CommandText = "insert into Employees values ('" + textBox1.Text + "','" + textBox6.Text + "','" + textBox5.Text + "','" + textBox4.Text + "','" + textBox3.Text + "','" + textBox2.Text + "','" + textBox8.Text + "','" + textBox7.Text + "')";
             cmd.ExecuteNonQuery();
 
             sqlCon.Close();
-            filldgv2();
+            filldgv2();//çalışan eklendikten sonra datagrid güncellemesi
 
-            MessageBox.Show("Çalışan eklendi");
+            MessageBox.Show("Çalışan eklendi.");
         }
-
+        //form açıldığında datagridde display yapılır
         private void adminCalisan_Load(object sender, EventArgs e)
         {
             filldgv2();
         }
-
+        //çalışan silme butonu
         private void button5_Click(object sender, EventArgs e)
         {
-            sqlCon.Open();
+            sqlCon.Open();//sql bağlantısı
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
+            //textboxtaki seçili idye göre silme işlemi yapılır.
             cmd.CommandText = "delete from Employees where EmployeeID='" + textBox1.Text + "' ";
 
             cmd.ExecuteNonQuery();
             sqlCon.Close();
-            filldgv2();
+            filldgv2();//çalışan silindikten sonra datagrid güncellemesi
 
-            MessageBox.Show("işten çıkarıldı");
+            MessageBox.Show("Çalışan işten çıkarıldı.");
         }
-
+        //çalışan güncelleme butonu
         private void button2_Click_1(object sender, EventArgs e)
         {
 
-            sqlCon.Open();
+            sqlCon.Open();//sql bağlantısı
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
+            //employeeId esas alınarak, textboxtan alınan bilgiler çalışanda değiştirilir.
             cmd.CommandText = "Update Employees set FirstName = '" + textBox6.Text + "', LastName = '" + textBox5.Text + "' , Title = '" + textBox4.Text + "' , BirthDate = '" + textBox3.Text + "' , HireDate = '" + textBox2.Text + "' ,  Salary = '" + textBox7.Text + "', Tel = '" + textBox8.Text + "' where EmployeeID ='" + textBox1.Text + "' ";
 
             cmd.ExecuteNonQuery();
             sqlCon.Close();
-            filldgv2();
+            filldgv2();//çalışan güncellendikten sonra datagrid güncellemesi
 
-            MessageBox.Show("bilgiler güncellendi");
+            MessageBox.Show("Çalışan bilgileri güncellendi.");
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
         }
-
+        private DataView dv;
+       
+        //arama butonu
         private void button3_Click_1(object sender, EventArgs e)
         {
-            string query = "select * from Employees where FirstName like @FirstName + '%'";
-            SqlDataAdapter sda = new SqlDataAdapter(query,sqlCon);
-            sda.SelectCommand.Parameters.AddWithValue("@FirstName", textBox9.Text.Trim()) ;
-            DataTable data = new DataTable();
-            sda.Fill(data);
-            dataGridView2.DataSource = data;
+            string aramaMetni = textBox9.Text.Trim();
+
+            FiltreleDataGridView(aramaMetni);
+        }
+
+        //arama fonksiyonu
+        private void FiltreleDataGridView(string aramaMetni)
+        {
+            if (dv == null)
+            {
+                DataTable dataTable = (DataTable)dataGridView2.DataSource;
+                dv = new DataView(dataTable);
+            }
+
+            // Önceki filtreleri temizle
+            dv.RowFilter = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(aramaMetni))
+            {
+                string filterExpression = $"FirstName LIKE '%{aramaMetni}%'";
+                dv.RowFilter = filterExpression;
+            }
+            //filtrelenmiş datagridi gösterir
+            DataTable filteredTable = dv.ToTable();
+
+            dataGridView2.DataSource = filteredTable;
+        }
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        //temizle butonu:textboxtaki bilgileri siler
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+            textBox7.Clear();
+            textBox8.Clear();
+            
+
         }
     }
 }

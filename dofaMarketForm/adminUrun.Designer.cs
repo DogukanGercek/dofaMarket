@@ -67,7 +67,8 @@
             urunlerGrid.Size = new Size(240, 255);
             urunlerGrid.TabIndex = 0;
             urunlerGrid.CellClick += urunlerGrid_CellClick;
-            urunlerGrid.CellContentClick += urunlerGrid_CellContentClick;
+            urunlerGrid.CellContentClick += urunlerGrid_CellClick;
+            urunlerGrid.CellMouseClick += urunlerGrid_CellMouseClick;
             // 
             // label2
             // 
@@ -177,6 +178,7 @@
             button3.TabIndex = 22;
             button3.Text = "Ara";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -233,6 +235,7 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(120, 23);
             textBox7.TabIndex = 27;
+            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // comboBox1
             // 
@@ -249,9 +252,9 @@
             // 
             // button6
             // 
-            button6.Location = new Point(649, 270);
+            button6.Location = new Point(675, 291);
             button6.Name = "button6";
-            button6.Size = new Size(113, 23);
+            button6.Size = new Size(68, 23);
             button6.TabIndex = 29;
             button6.Text = "Temizle";
             button6.UseVisualStyleBackColor = true;
