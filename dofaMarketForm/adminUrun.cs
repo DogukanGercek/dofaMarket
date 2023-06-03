@@ -21,9 +21,9 @@ namespace dofaMarketForm
 {
     public partial class adminUrun : Form
     {
-
+        //sql bağlantısı
         SqlConnection sqlCon = new SqlConnection(@"Data Source=34.155.53.38;Initial Catalog=market-database;Persist Security Info=True;User ID=sqlserver;Password=Knmi^$O$tI0)MnG`");
-
+        //entity bağlantısı
         MarketDatabaseContext baglantı = new MarketDatabaseContext();
 
         public adminUrun()
@@ -36,7 +36,7 @@ namespace dofaMarketForm
         {
 
         }
-
+        //sayfa açıldığında datagrid ve combobox display edilmesi
         private void adminUrun_Load(object sender, EventArgs e)
         {
             fill();
@@ -55,9 +55,9 @@ namespace dofaMarketForm
                     if (short.TryParse(stokTextbox.Text, out stok))
                     {
                         int cid;
-                        if (int.TryParse(kategoriTextbox.Text, out cid))
+                        if (int.TryParse(kategoriTextbox.Text, out cid))//sqldeki değerlerin türleri ve textboxtan alınan değerlerin hata çıkarmaması için dönüşümler
                         {
-                            var yeniSatir = new Product
+                            var yeniSatir = new Product//eklenecek rowun bilgileri 
                             {
                                 ProductId = id,
                                 ProductName = isimTextbox.Text,
@@ -71,7 +71,7 @@ namespace dofaMarketForm
 
                             baglantı.SaveChanges(); // Değişiklikleri kaydet
                             MessageBox.Show("Ürün eklendi.");
-                            fill();
+                            fill();//ürün eklendikten sonra datagrid güncellemesi
                         }
 
 
@@ -81,63 +81,66 @@ namespace dofaMarketForm
             }
 
         }
-
+        //ürün güncelleme butonu
         private void button2_Click(object sender, EventArgs e)
         {
             decimal fiyat = decimal.Parse(fiyatTextbox.Text);
             short stok = short.Parse(stokTextbox.Text);
-            int id = int.Parse(idTextbox.Text);
-            sqlCon.Open();
+            int id = int.Parse(idTextbox.Text);//ürün bilgileri sqle göndermeden önce gerekli dönüşümler
+            sqlCon.Open();//sql bağlantısı
 
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
-
+            //productId'ye göre yapılacak güncellemeler textboxtan alınır
             cmd.CommandText = "Update Products set ProductName = '" + isimTextbox.Text + "', UnitPrice = '" + fiyat + "' , UintsInStock = '" + stok + "' , Supplier = '" + ureticiTextbox.Text + "' where  ProductId='" + id + "' ";
             cmd.ExecuteNonQuery();
             sqlCon.Close();
-            fill();
+            fill();//bilgiler güncellendikten sonra datagrid güncellemesi
 
-            MessageBox.Show("bilgiler güncellendi");
+            MessageBox.Show("Bilgiler Güncellendi");
 
         }
 
-
+        //datagride sqlden gelen bilgileri display etme
         private void fill()
         {
 
-            sqlCon.Open();
+            sqlCon.Open();//sql bağlantısı
             SqlCommand cmd = sqlCon.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Products";
+            cmd.CommandText = "select * from Products";//products tableındaki rowlar alınır
             cmd.ExecuteNonQuery();
             SqlDataAdapter sqlDa = new SqlDataAdapter(cmd);
             DataTable dtb1 = new DataTable();
             sqlDa.Fill(dtb1);
             urunlerGrid.DataSource = dtb1;
-            urunlerGrid.Columns[0].Visible = false;
+            urunlerGrid.Columns[1].HeaderText = "İsim";//Column isimleri düzenlemesi
+            urunlerGrid.Columns[3].HeaderText = "Fiyat";
+
+            urunlerGrid.Columns[0].Visible = false;//Display ederken basit gösterme için diğer columnların gizlenmesi
             urunlerGrid.Columns[2].Visible = false;
             urunlerGrid.Columns[4].Visible = false;
             urunlerGrid.Columns[5].Visible = false;
-            originalDataTable = (DataTable)urunlerGrid.DataSource;
+            originalDataTable = (DataTable)urunlerGrid.DataSource;//başka fonksiyonlarda kullanmak üzere tableın kopyalanması
             sqlCon.Close();
 
 
 
         }
-
+        //comboboxta seçilen kategoriye göre arama yapma
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string secilenBirim = comboBox1.SelectedItem.ToString();
             string aramaMetni = textBox7.Text.Trim();
 
-            FiltreleDataGridView(secilenBirim, aramaMetni);
+            FiltreleDataGridView(secilenBirim, aramaMetni);//filtrelenecek kategori ve textin fonksiyona gönderilmesi
         }
         private DataTable originalDataTable;
 
-
+        //datagridde filtreleme işlemi
         private void FiltreleDataGridView(string secilenBirim, string aramaMetni)
         {
-            Dictionary<string, int> kategoriIDMapping = new Dictionary<string, int>()
+            Dictionary<string, int> kategoriIDMapping = new Dictionary<string, int>()//kategoriye göre ayrıma işlemi
     {
         { "Food&Bev", 1 },
         { "Electronics", 2 },
@@ -157,7 +160,7 @@ namespace dofaMarketForm
             {
                 dv.RowFilter = "CategoryID = " + secilenKategoriID;
             }
-            if (!string.IsNullOrWhiteSpace(aramaMetni))
+            if (!string.IsNullOrWhiteSpace(aramaMetni))//text olarak arama işlemi
             {
                 string filterExpression = $"ProductName LIKE '%{aramaMetni}%'";
                 dv.RowFilter += (string.IsNullOrEmpty(dv.RowFilter) ? "" : " AND ") + filterExpression;
@@ -165,12 +168,12 @@ namespace dofaMarketForm
 
             DataTable filteredTable = dv.ToTable();
 
-            urunlerGrid.DataSource = filteredTable;
+            urunlerGrid.DataSource = filteredTable;//filtrelenmiş halinin gösterilmesi
         }
 
 
 
-
+        //comboboxın içinin categories tableından gelen bilgilerle doldurulması
         private void FillComboBox()
         {
             var kategoriler = baglantı.Categories.ToList();
@@ -181,9 +184,9 @@ namespace dofaMarketForm
                 comboBox1.Items.Add(kategori.CategoryName);
 
             }
-            comboBox1.Items.Add("Tüm Kategoriler");
+            comboBox1.Items.Add("Tüm Kategoriler");//tüm kategorilerde arayabilmek için ekstra item eklenmesi
         }
-
+        //datagridde cell tıklaması yapıldığında sqlden alınan bilgilerin textboxlara yazdırılması
         private void urunlerGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -192,7 +195,7 @@ namespace dofaMarketForm
                 DataGridViewRow row = urunlerGrid.Rows[e.RowIndex];
 
                 string id = row.Cells[2].Value.ToString();
-                int id2 = int.Parse(id);
+                int id2 = int.Parse(id);//burada categoryidye göre kategori yazdırılması işlemi yapılıyor
                 if (id2 == 1)
                 {
                     kategoriTextbox.Text = "Food&Bev";
@@ -209,17 +212,17 @@ namespace dofaMarketForm
                 isimTextbox.Text = row.Cells[1].Value.ToString();
                 decimal fiyat = (decimal)row.Cells[3].Value;
                 int price = (int)fiyat;
-                string price2 = price.ToString();
+                string price2 = price.ToString();//fiyatın orijinal türü olan money türünden daha düzenli gözükmesi için dönüşümler
                 fiyatTextbox.Text = price2;
                 ureticiTextbox.Text = row.Cells[5].Value.ToString();
                 stokTextbox.Text = row.Cells[4].Value.ToString();
 
             }
         }
-
+        //ürün silme butonu
         private void button1_Click(object sender, EventArgs e)
         {
-            if (urunlerGrid.SelectedRows.Count > 0) // En az bir satır seçili mi kontrol edin
+            if (urunlerGrid.SelectedRows.Count > 0) // En az bir satır seçili mi kontrol etme
             {
                 DataGridViewRow selectedRow = urunlerGrid.SelectedRows[0];
                 int selectedRowIndex = selectedRow.Index;
@@ -236,15 +239,15 @@ namespace dofaMarketForm
                 }
                 MessageBox.Show("Ürün Silindi.");
 
-                fill();
+                fill();//ürün silindikten sonra datagrid güncellemesi
             }
         }
-
+        //ürünleri göster butonu
         private void button5_Click(object sender, EventArgs e)
         {
             fill();
         }
-
+        //temizle butonu
         private void button6_Click(object sender, EventArgs e)
         {
             idTextbox.Clear();
@@ -255,7 +258,7 @@ namespace dofaMarketForm
             stokTextbox.Clear();
 
         }
-
+            //arama butonu
         private void button3_Click(object sender, EventArgs e)
         {
             string aramaMetni = textBox7.Text.Trim();
@@ -267,7 +270,7 @@ namespace dofaMarketForm
         {
 
         }
-
+        //herhangi bir celle tıklandığında hata çıkmaması için tekrardan cell tıklaması fonksiyonunun yazılması
         private void urunlerGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)

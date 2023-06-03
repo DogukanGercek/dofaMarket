@@ -51,7 +51,7 @@ namespace dofaMarketForm
                         form2.Show();
                     }
 
-                    this.Hide();
+                    //this.Hide();
 
                 }
                 else
