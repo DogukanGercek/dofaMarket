@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\muham\\OneDrive\\Masaüstü\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj": {}
+    "C:\\Users\\muham\\OneDrive\\Masaüstü\\projeler\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\muham\\OneDrive\\Masaüstü\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj": {
+    "C:\\Users\\muham\\OneDrive\\Masaüstü\\projeler\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Masaüstü\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj",
+        "projectUniqueName": "C:\\Users\\muham\\OneDrive\\Masaüstü\\projeler\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj",
         "projectName": "dofaMarketForm",
-        "projectPath": "C:\\Users\\muham\\OneDrive\\Masaüstü\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj",
+        "projectPath": "C:\\Users\\muham\\OneDrive\\Masaüstü\\projeler\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muham\\OneDrive\\Masaüstü\\dofaMarket\\dofaMarketForm\\obj\\",
+        "outputPath": "C:\\Users\\muham\\OneDrive\\Masaüstü\\projeler\\dofaMarket\\dofaMarketForm\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

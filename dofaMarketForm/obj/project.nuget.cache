@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Km7HWPXlM00E0qUObghRPZ+OwCYueeH996k6jugXIQf6RF+G6tFKE4Zt9ofEAemfDHHxAlsWwD1HDx/5vq/g4A==",
+  "dgSpecHash": "baZfW6Pvdg2FRgx7vvKt9zzoKVHhsLRV6K9a/kFiOJRLvQU6gaS3q4CQX/dM1MAJgrpmk0DU1w9XFFLuPZGNYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Masaüstü\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj",
+  "projectFilePath": "C:\\Users\\muham\\OneDrive\\Masaüstü\\projeler\\dofaMarket\\dofaMarketForm\\dofaMarketForm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
